@@ -28,4 +28,10 @@ public class LoginService {
 		
 		return res;
 	}
+	
+	public boolean adduser(Login login) {
+		
+		boolean res =logindao.addUser(login);
+		return res;
+	}
 }

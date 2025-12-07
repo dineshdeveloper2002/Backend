@@ -24,6 +24,20 @@ public class LoginDAO{
 		return result;
 	
 	}
+	
+	public boolean addUser(Login login) {
+		
+		Document query = new Document();
+		query.append("username", login.getUsername());
+		query.append("password", login.getPassword());
+		query.append("firstname", login.getFirstname());
+		query.append("lastname", login.getLastname());
+		query.append("role", login.getRole());
+		query.append("companyname", login.getCompanyName());
+		mongoConnection.getCollection("users").insertOne(query);
+		return true;
+
+	}
 
 //	public boolean authenicateUser(Login login) {
 //		

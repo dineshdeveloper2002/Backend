@@ -22,4 +22,24 @@ public class LoginController {
 		res.setMessage(auth?"Login Sucess":"Unauthorized access");
 		return res;
 	}
+	
+	
+	@PostMapping("/signup")
+	public LoginResponse signUpUser(@RequestBody Login login) {
+		
+		LoginResponse res = new LoginResponse();
+		boolean checkUser = service.authenicateuser(login);
+		if(checkUser==true) {
+			res.setMessage("User already exist");
+			return res;
+		}
+		else {
+		boolean auth = service.adduser(login);
+		res.setSucess(auth?"true":"false");
+		res.setMessage(auth?"User added succesfully":"Unauthorized access");
+		return res;
+		}
+	}
+	
+	
 }
