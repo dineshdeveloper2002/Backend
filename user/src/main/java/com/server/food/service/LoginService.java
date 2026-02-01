@@ -15,7 +15,7 @@ public class LoginService {
 	@Autowired
 	private LoginDAO logindao;
 
-	public boolean authenicateuser( Login login) {
+	public boolean authenicateUser( Login login) {
 		
 		boolean res;
 		Document auth = logindao.authenicateUser(login);
@@ -23,9 +23,9 @@ public class LoginService {
 			return false;
 		}
 		else {
-			res= login.getUsername().equals(auth.getString("username"));
-		}
+			res= (login.getUsername().equals(auth.getString("username")) && login.getPassword().equals(auth.getString("password")));		}
 		
 		return res;
 	}
+	
 }

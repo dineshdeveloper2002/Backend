@@ -1,5 +1,7 @@
 package com.server.food.model;
 
+import org.bson.types.ObjectId;
+
 public class Login {
 
 	private String firstname;
@@ -32,6 +34,13 @@ public class Login {
 	private String password;
 	private String role;
 	private String companyName;
+	private Object id;
+	public Object getId() {
+		return id;
+	}
+	public void setId(ObjectId objectId) {
+		this.id = objectId;
+	}
 	public String getUsername() {
 		return username;
 	}
