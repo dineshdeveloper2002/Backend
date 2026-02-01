@@ -34,19 +34,19 @@ public class LoginDAO{
 		query.append("lastname", login.getLastname());
 		query.append("role", login.getRole());
 		query.append("companyname", login.getCompanyName());
+		login.setId(query.getObjectId("_id"));
 		mongoConnection.getCollection("users").insertOne(query);
 		return true;
 
 	}
-
-//	public boolean authenicateUser(Login login) {
-//		
-//		Document query = new Document();
-//		query.append("UPI", "Paid");
-//		mongoConnection.getCollection("UPI").insertOne(query);
-//		
-//		System.out.println("Database details captured");
-//		return true;
-//	}
+	
+	public boolean editUser(Login login) {
+		//find query 
+		Document filter = new Document("_id",login.getId());
+		Document updateQuery = new Document("$set",new Document("username",login.getUsername()));
+		mongoConnection.getCollection("users").updateOne(filter, updateQuery);
+		return true;
+	}	
+	
 	
 }

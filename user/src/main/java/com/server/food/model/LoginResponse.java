@@ -2,12 +2,12 @@ package com.server.food.model;
 
 public class LoginResponse {
 	
-	public String sucess;
+	public boolean sucess;
 	public String message;
-	public String getSucess() {
+	public boolean getSucess() {
 		return sucess;
 	}
-	public void setSucess(String sucess) {
+	public void setSucess(Boolean sucess) {
 		this.sucess = sucess;
 	}
 	public String getMessage() {
